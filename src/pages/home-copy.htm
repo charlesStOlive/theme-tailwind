@@ -1,7 +1,6 @@
 title = "Demonstration"
-url = "/"
+url = "/copy"
 layout = "default"
-[contenteditor]
 ==
 <!--Hero-->
 <div class="pt-24">
@@ -9,14 +8,11 @@ layout = "default"
     <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <!--Left Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p class="uppercase tracking-loose w-full mt-20">
-                {% component 'contenteditor' file="home/i_pretitle.htm" fixture="span" %}
+            <p class="uppercase tracking-loose w-full mt-20">TalktoB au service du BtoB<i class="fas fa-thumbs-up"></i>
             </p>
-            <h1 class="my-4 text-5xl font-bold leading-tight">
-                {% component 'contenteditor' file="home/i_title.htm" fixture="span" %}</h1>
-            <p class="leading-normal text-2xl mb-8">
-                {% component 'contenteditor' file="home/i_intro.htm" fixture="span" %}
-            </p>
+            <h1 class="my-4 text-5xl font-bold leading-tight">Exlploitez vos données</h1>
+            <p class="leading-normal text-2xl mb-8">Fuzionnez vos données, génerez des offres <b>Word</b> ou pdf, des
+                portails de services en lignes, des campagnes emails, et bien plus encore...</p>
 
 
 
@@ -24,7 +20,7 @@ layout = "default"
 
         </div>
         <!--Right Col-->
-        <div class="md:w-3/5 py-6 text-center">
+        <div class=" md:w-3/5 py-6 text-center">
             <div class="w-full m-auto md:w-4/5 mb-10">
                 {% partial 'svgs/undraw_online_transactions_02ka' %}
             </div>
@@ -43,22 +39,18 @@ layout = "default"
 
 <section class="bg-white border-b py-8">
     <div class="container max-w-5xl mx-auto m-8">
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-            {% component 'contenteditor' file="home/c1_title.htm" fixture="span" %}</h1>
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">TalktoB en quelques mots</h1>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
         <div class="flex flex-wrap">
             <div class="w-5/6 sm:w-1/2 p-6">
-                <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                    {% component 'contenteditor' file="home/c1_a_title.htm" fixture="span" %}</h3>
-                <p class="text-gray-600 mb-8">
-                    {% component 'contenteditor' file="home/c1_a_cont.htm" fixture="span" %}<br><br>
+                <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
+                <p class="text-gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at
+                    ipsum eu nunc commodo posuere et sit amet ligula.<br /><br />
 
-                    <a class="text-orange-500 underline"
-                        href="https://undraw.co/">{% component 'contenteditor' file="home/c1_a_ctoa.htm" fixture="span" %}</a>
-                </p>
+                    Images from: <a class="text-orange-500 underline" href="https://undraw.co/">undraw.co</a></p>
 
             </div>
             <div class="w-full sm:w-1/2 p-6">
@@ -72,16 +64,14 @@ layout = "default"
             <div class="w-full sm:w-1/2 p-6 mt-6">
                 {% partial 'svgs/some_apps' %}
             </div>
-            <div class="w-5/6 sm:w-1/2 p-6">
-                <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                    {% component 'contenteditor' file="home/c1_b_title.htm" fixture="span" %}</h3>
-                <p class="text-gray-600 mb-8">
-                    {% component 'contenteditor' file="home/c1_b_content.htm" fixture="span" %}<br><br>
-
-                    <a class="text-orange-500 underline"
-                        href="#">{% component 'contenteditor' file="home/c1_b_ctoa.htm" fixture="span" %}</a>
-                </p>
-
+            <div class="w-full sm:w-1/2 p-6 mt-6">
+                <div class="align-middle">
+                    <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Lorem ipsum dolor sit amet</h3>
+                    <p class="text-gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                        at ipsum eu nunc commodo posuere et sit amet ligula.<br /><br />
+                        Images from: <a class="text-orange-500 underline" href="https://undraw.co/">undraw.co</a>
+                    </p>
+                </div>
             </div>
 
         </div>
@@ -92,10 +82,9 @@ layout = "default"
 <div class="pt-24 bg-fixed bg-red-600"
     style="background-image:url(https://res.cloudinary.com/charles-saint-olive/image/upload/c_fill,h_603,q_auto:good,w_1024/v1580719783/wakaari/assets/fabio-oyXis2kALVg-unsplash.jpg)">
     <div class="flex justify-center">
-        <h1 class="my-4 text-5xl font-bold leading-tight">
-            {% component 'contenteditor' file="home/c2_title.htm" fixture="span" %}</h1>
+        <h1 class="my-4 text-5xl font-bold leading-tight">Exlploitez vos données</h1>
     </div>
-    <div class="relative">
+    <div class="relative ">
         {% partial 'svgs/separator/wave' %}
     </div>
 </div>
@@ -104,8 +93,7 @@ layout = "default"
 
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
 
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-            {% component 'contenteditor' file="home/c3_title.htm" fixture="span" %}</h1>
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Title</h1>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
@@ -113,7 +101,7 @@ layout = "default"
         <div class="w-full md:w-1/2 lg:w-1/4 p-6 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                 <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                    <img class="h-32 w-full object-cover gradient" src="https://picsum.photos/300/300">
+                    <img class="h-32 w-full object-cover gradient" src="https://picsum.photos/300/300" />
                     <div class="w-full font-bold text-xl text-gray-800 pt-4 px-6">Lorem ipsum dolor sit amet.</div>
                     <p class="text-gray-800 text-base px-6 mb-5">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo
@@ -164,15 +152,13 @@ layout = "default"
 
 <section class="container mx-auto text-center py-6 mb-12">
 
-    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-        {% component 'contenteditor' file="home/c4_title.htm" fixture="span" %}</h1>
+    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">Call to Action</h1>
     <div class="w-full mb-4">
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
-    <h3 class="my-4 text-3xl leading-tight">{% component 'contenteditor' file="home/c4_text.htm" fixture="span" %}</h3>
+    <h3 class="my-4 text-3xl leading-tight">Main Hero Message to sell yourself!</h3>
 
-    <button
-        class="mx-auto lg:mx-0 hover:underline btn btn-primary">{% component 'contenteditor' file="home/c4_ctoa.htm" fixture="span" %}</button>
+    <button class="mx-auto lg:mx-0 hover:underline btn btn-primary">Action!</button>
 
 </section>

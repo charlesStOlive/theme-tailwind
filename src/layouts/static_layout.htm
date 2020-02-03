@@ -1,0 +1,50 @@
+description = "StaticLayout layout"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>October CMS - {{ this.page.title }}</title>
+	<meta name="description" content="{{ this.page.meta_description }}">
+	<meta name="title" content="{{ this.page.meta_title }}">
+	<meta name="author" content="OctoberCMS">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content="OctoberCMS">
+	<link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/cbed72b3e5.js" crossorigin="anonymous"></script>
+	{% styles %}
+</head>
+
+<body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+
+
+	<header id="layout-header">
+		{% partial 'site/header' %}
+	</header>
+
+	<section id="layout-content">
+		{variable name="tagline" label="Tagline" tab="Header" type="text"}{/variable}
+		{% page %}
+	</section>
+
+	<!--Footer-->
+	<footer id="layout_footer" class="bg-white">
+		{% partial 'site/footer' %}
+	</footer>
+
+
+	<!-- Scripts & Styles-->
+	<script src="{{ 'assets/javascript/theme.js'|theme }}"></script>
+	<link rel="stylesheet" property="stylesheet" href="{{ 'assets/css/theme.css'|theme }}">
+	{% framework extras %}
+	{% scripts %}
+
+</body>
+
+</html>

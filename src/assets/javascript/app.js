@@ -1,11 +1,13 @@
 /*
  * Needed for October's framework
  */
-window.jQuery = require('jquery');
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 /*
 * Application
 */
-
+console.log($)
 
 var scrollpos = window.scrollY;
 var header = document.getElementById("header");
