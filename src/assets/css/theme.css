@@ -1,0 +1,26 @@
+/* Custom css should be typed here if needed */
+
+:root {
+    --color-primary: #048B9A;
+    --color-secondary: #FDC82C;
+  }
+  .gradient {
+    background: linear-gradient(90deg, #048B9A 0%, #20494F 100%);
+  }
+
+  .btn {
+    @apply font-bold rounded-l-sm my-2 py-2 px-4 shadow-lg;
+  } 
+  .btn-primary {
+    @apply text-white bg-primary;
+  }
+  .btn-secondary {
+    @apply text-white bg-secondary;
+  }
+  /**
+  * ANimation
+  **/
+  .wk-fadeIn {
+    @apply animated fadeIn slower delay-1s;
+  }
+
