@@ -24,3 +24,16 @@
     @apply animated fadeIn slower delay-1s;
   }
 
+
+  /**
+  *
+  **/
+  .markdown li {
+    @apply list-disc pl-1 ml-4
+  }
+  .markdown p {
+    @apply my-2
+  }
+
+  
+

@@ -4962,6 +4962,13 @@ tailwindcss-animatecss@^0.2.7:
   resolved "https://registry.yarnpkg.com/tailwindcss-animatecss/-/tailwindcss-animatecss-0.2.7.tgz#cccb78fbe6a568ebf0d513751ec1714986358828"
   integrity sha512-KDh4JbH8IepWF8ATEvgPDMJWmYH0f+fHPLU6akZy4gkGLRH8PEQqgGurhKhpf05nEXHMEJF2mRjBCppSmQk+9Q==
 
+tailwindcss-transitions@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-transitions/-/tailwindcss-transitions-2.2.0.tgz#73dd0122ce6d30575d98921fe795b8e290c96790"
+  integrity sha512-yI8nzJL8EOXdXECQDVDFBQ89yNhqYuAzltwgHEjU+0R5TZAfIfA4DEtvdVbBMmvAgYOGMhm0D/7zPfc7Wl3MSg==
+  dependencies:
+    lodash "^4.17.15"
+
 tailwindcss-typography@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tailwindcss-typography/-/tailwindcss-typography-2.2.0.tgz#7e555f25f1870e39c0013eb746ce365761a9680f"

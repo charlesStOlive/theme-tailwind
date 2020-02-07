@@ -1,0 +1,58 @@
+title = "Besoin"
+url = "/need/:id"
+layout = "default"
+==
+use Waka\Wcms\Models\Need;
+function onStart()
+{
+$need = Need::find($this->param('id'));
+$this['need'] = $need;
+$this['url'] = $need->getCloudiBaseUrl('main_image','jpg-1024');
+}
+==
+{##}
+<!--Hero-->
+<div class="pt-24">
+
+    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <!--Left Col-->
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+            <p class="uppercase tracking-loose w-full">
+                {{need.catchline}}
+            </p>
+            <h1 class="my-4 text-5xl font-bold leading-tight">
+                {{need.name}}
+                <p class="leading-normal text-2xl mb-8">
+                    {{need.intro}}
+                </p>
+        </div>
+        <!--Right Col-->
+        <div class="md:w-3/5 py-6 text-center">
+            <div class="w-full m-auto md:w-4/5 mb-10">
+                <img class="animated fadeInRight slower shadow-lg h-500 w-full object-cover" src="{{ url }}">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="relative -mt-12 lg:-mt-48">
+    {% partial 'svgs/separator/wave' %}
+</div>
+
+
+
+<section class="bg-white border-b py-8">
+    <div class="container max-w-5xl mx-auto ">
+        <h1 class="w-full text-5xl font-bold leading-tight text-center text-gray-800">
+            Explication</h1>
+        <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="w-max-lg mb-4 mt-12 text-gray-800 markdown">
+            {{ need.description  | md  }}
+        </div>
+    </div>
+</section>

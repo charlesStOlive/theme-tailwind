@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
-    "tailwindcss-animatecss": "^0.2.7"
+    "tailwindcss-animatecss": "^0.2.7",
+    "tailwindcss-transitions": "^2.2.0"
   }
 }
