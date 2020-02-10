@@ -3,18 +3,19 @@ let path = require('path'),
     themeRegex = /\{\{[\s?]*["|'|`](.*[\.[png|jpe?g|gif|ico])["|'|`][\s?]*\|[\s?]*theme[\s?]*\}\}/g;
 
 module.exports = function (content, map, meta) {
-    let filterTags = content.match(themeRegex)
-    if (filterTags) {
-        output = true
-        filterTags = [...new Set(filterTags)]
-        filterTags.map(filterTag => {
-            let parts = themeRegex.exec(filterTag),
-                fromFullPath = path.join(this.rootContext, 'src/', parts[1]),
-                file = fs.readFileSync(fromFullPath)
-                fromRelativePath = path.relative(this.context, fromFullPath)
-            this.emitFile(parts[1], file)
-        })
+    console.log("------debut de verif--------")
+    while ((m = themeRegex.exec(content)) !== null) {
+        // This is necessary to avoid infinite loops with zero-width matches
+        if (m.index === content.lastIndex) {
+            content.lastIndex++;
+        }
+        let assetToSend = m[1];
+        fromFullPath = path.join(this.rootContext, 'src/', assetToSend)
+        file = fs.readFileSync(fromFullPath)
+        fromRelativePath = path.relative(this.context, fromFullPath)
+        this.emitFile(assetToSend, file)
     }
+
 
     return 'module.exports = [\n' +
         JSON.stringify(content) +
