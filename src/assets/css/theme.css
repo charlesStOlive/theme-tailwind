@@ -7,6 +7,12 @@
   .gradient {
     background: linear-gradient(90deg, #048B9A 0%, #20494F 100%);
   }
+  .h2 {
+    @apply font-bold text-2xl
+  }
+  .h1 {
+    @apply font-bold text-4xl
+  }
 
   .btn {
     @apply font-bold rounded-l-sm my-2 py-2 px-4 shadow-lg;

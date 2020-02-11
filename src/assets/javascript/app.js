@@ -10,7 +10,6 @@ window.$ = $;
 var mobile;
 $(window).resize(function () {
     mobile = window.matchMedia("(max-width: 1024px)").matches;
-    console.log(mobile);
 }).resize();
 
 var scrollpos = window.scrollY;
@@ -165,3 +164,11 @@ function isAnyPartOfElementInViewport(el, marge = 150) {
     return (vertInView && horInView);
 }
 
+
+$(".animate_icon")
+    .mouseover(function () {
+        $(this).find("img").addClass("animated heartBeat");
+    })
+    .mouseout(function () {
+        $(this).find("img").removeClass("animated heartBeat");
+    })

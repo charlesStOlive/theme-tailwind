@@ -54,5 +54,17 @@ $this['url'] = $need->getCloudiBaseUrl('main_image','jpg-1024');
         <div class="w-max-lg mb-4 mt-12 text-gray-800 markdown">
             {{ need.description  | md  }}
         </div>
+        <p class="text-gray-700 font-bold">Les solutions utilisés pour ce genre de programme.</p>
+        <div class="w-full flex flex-col flex-wrap lg:flex-row justify-center lg:justify-start ">
+            {% for solution in need.solutions %}
+            <a href="/solution/{{ solution.id }}" class="animate_icon">
+                <div class="m-2 flex shadow w-64  h-16 bg-primary">
+                    <img class="self-center bg-white m-1 p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                    <div class="self-center   p-2  text-gray-800 ">{{ solution.name }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
     </div>
+
 </section>
