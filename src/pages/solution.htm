@@ -1,17 +1,19 @@
 title = "Besoin"
-url = "/solution/:id"
+url = "/solution/:slug"
 layout = "default"
 ==
 use Waka\Wcms\Models\Solution;
+
 function onStart()
 {
-$solution = Solution::find($this->param('id'));
+$solution = Solution::where('slug', $this->param('slug'))->first();
 $this['solution'] = $solution;
 $needs = $solution->needs;
 $needsArray = [];
+
 foreach($needs as $need) {
 $row = [
-'id' => $need->id,
+'slug' => $need->slug,
 'name' => $need->name,
 'intro' => $need->intro,
 'url' => $need->getCloudiBaseUrl('main_image','jpg-400-350'),
@@ -20,7 +22,10 @@ $row = [
 ];
 array_push($needsArray, $row);
 }
+
+
 $this['needs'] = $needsArray;
+
 }
 ==
 {##}
@@ -30,7 +35,7 @@ $this['needs'] = $needsArray;
     <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <!--Left Col-->
         <div class="flex flex-col w-full md:w-3/5 justify-center items-start text-center md:text-left">
-            <h1 class="my-4 text-5xl font-bold leading-tight">
+            <h1 class="leading-tight my-4">
                 {{solution.name}}
         </div>
 
@@ -44,37 +49,43 @@ $this['needs'] = $needsArray;
     <!--Right Col-->
     <div class="relative container max-w-5xlg mx-auto ">
         <div class="hidden lg:block z-10 absolute top-0" style="top:-10em; right:10em">
-            <img class="object-cover" src="{{ solution.main_image.thumb(200,200) }}">
+            <img class="object-cover" src="{{ solution.main_image.thumb(150,150) }}">
         </div>
     </div>
 </div>
 
 
 
-<section class="bg-white relative">
+<section class="bg-white relative text-mydark">
 
-    <div class="container max-w-5xlg mx-auto ">
+    <div class="container max-w-5xl mx-auto">
 
 
-        <h1 class="w-full text-5xl font-bold leading-tight text-center text-gray-800">
-            Explication</h1>
+        <h2 class="text-center">
+            Explication</h2>
+        <!-- Flickity HTML init -->
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-        <div class="w-max-lg mb-4 mt-12 text-gray-800 markdown">
+        <div class="w-max-lg mb-4 mt-12 markdown">
             {{ solution.description  | md  }}
         </div>
-        <p class="text-gray-700 font-bold">Voici des solutions qui se basent sur cette solution</p>
-        <div class="w-full flex flex-col flex-wrap lg:flex-row justify-center lg:justify-start ">
+
+
+
+        {% partial 'carousel/full_text_img' data=imgs %}
+
+        <h3 class="py-4">Cette solution, permet de repondre à ce genre de besoin :</h3>
+        <div class="w-full flex flex-col flex-wrap lg:flex-row pb-6 items-center  -mx-2 justify-center ">
             {% for need in needs %}
-            <div class="md:w-1/2 lg:w-1/3 p-4 max-w-lg flex flex-col">
+            <div class="md:w-1/2 lg:w-1/3  px-2 pt-4 max-w-md  flex flex-col">
                 <div
-                    class="flex-1 bg-white rounded-t rounded-b-none group overflow-hidden shadow hover:shadow-2xl hover:bg-primary transition-all transition-500     shadow  text-gray-800">
-                    <a href="/need/{{ need.id }}" class="flex flex-wrap">
+                    class="flex-1 bg-white rounded-t rounded-b-none group overflow-hidden shadow hover:shadow-2xl hover:bg-primary transition-all transition-500     shadow  text-mydark">
+                    <a href="/need/{{ need.slug }}" class="flex flex-wrap">
                         <img class="h-20 w-full w-max-400 object-cover opacity-100 group-hover:opacity-75"
                             src="{{ need.url }}">
-                        <div class="w-full font-bold group-hover:text-white text-xl  pt-4 px-6">{{ need.name }}</div>
-                        <p class="text-gray-800 text-base group-hover:text-white px-6">{{ need.intro }}</p>
+                        <div class="w-full font-bold group-hover:text-white  pt-4 px-6">{{ need.name }}</div>
+                        <p class="text-mydark text-sm group-hover:text-white px-6">{{ need.intro }}</p>
                     </a>
                     <div class="flex items-center justify-end px-6 mb-4">
                         <a href="#" class="hover:underline text-secondary"><b>En savoir +</b></a>
@@ -83,6 +94,11 @@ $this['needs'] = $needsArray;
             </div>
             {% endfor %}
         </div>
+
+
+
+
+
     </div>
 
 

@@ -4,16 +4,36 @@ module.exports = {
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'var(--color-secondary)',
+        mydark: 'var(--color-mydark)',
+        success: 'var(--color-success)',
+        warning: 'var(--color-warning)',
+        error: 'var(--color-error)',
+        info: 'var(--color-info)',
+
         // ...
       },
+      height: {
+        midscreen: '50vh',
+        thirdscreen: '75vh',
+      }
     },
     fill: theme => ({
       'primary': 'var(--color-primary)',
       'secondary': 'var(--color-secondary)',
+      'mydark': 'var(--color-mydark)',
+      'success': 'var(--color-success)',
+      'warning': 'var(--color-warning)',
+      'error': 'var(--color-error)',
+      'info': 'var(--color-info)',
     }),
     stroke: theme => ({
       'primary': 'var(--color-primary)',
       'secondary': 'var(--color-secondary)',
+      'mydark': 'var(--color-mydark)',
+      'success': 'var(--color-success)',
+      'warning': 'var(--color-warning)',
+      'error': 'var(--color-error)',
+      'info': 'var(--color-info)',
     }),
     textIndent: { // defaults to {}
       '1': '0.25rem',
@@ -23,92 +43,6 @@ module.exports = {
       'default': '0 2px 5px rgba(229,244,177, 0.5)',
       'lg': '0 2px 10px rgba(255, 255, 255, 0.5)',
     },
-    textStyles: theme => ({ // defaults to {}
-      heading: {
-        output: false, // this means there won't be a "heading" component in the CSS, but it can be extended
-        fontWeight: theme('fontWeight.bold'),
-        lineHeight: theme('lineHeight.tight'),
-      },
-      h1: {
-        extends: 'heading', // this means all the styles in "heading" will be copied here; "extends" can also be an array to extend multiple text styles
-        fontSize: theme('fontSize.5xl'),
-        '@screen sm': {
-          fontSize: theme('fontSize.6xl'),
-        },
-      },
-      h2: {
-        extends: 'heading',
-        fontSize: theme('fontSize.4xl'),
-        '@screen sm': {
-          fontSize: theme('fontSize.5xl'),
-        },
-      },
-      h3: {
-        extends: 'heading',
-        fontSize: theme('fontSize.4xl'),
-      },
-      h4: {
-        extends: 'heading',
-        fontSize: theme('fontSize.3xl'),
-      },
-      h5: {
-        extends: 'heading',
-        fontSize: theme('fontSize.2xl'),
-      },
-      h6: {
-        extends: 'heading',
-        fontSize: theme('fontSize.xl'),
-      },
-      link: {
-        fontWeight: theme('fontWeight.bold'),
-        color: theme('colors.blue.400'),
-        '&:hover': {
-          color: theme('colors.blue.600'),
-          textDecoration: 'underline',
-        },
-      },
-      richText: {
-        fontWeight: theme('fontWeight.normal'),
-        fontSize: theme('fontSize.base'),
-        lineHeight: theme('lineHeight.relaxed'),
-        '> * + *': {
-          marginTop: '1em',
-        },
-        'h1': {
-          extends: 'h1',
-        },
-        'h2': {
-          extends: 'h2',
-        },
-        'h3': {
-          extends: 'h3',
-        },
-        'h4': {
-          extends: 'h4',
-        },
-        'h5': {
-          extends: 'h5',
-        },
-        'h6': {
-          extends: 'h6',
-        },
-        'ul': {
-          listStyleType: 'disc',
-        },
-        'ol': {
-          listStyleType: 'decimal',
-        },
-        'a': {
-          extends: 'link',
-        },
-        'b, strong': {
-          fontWeight: theme('fontWeight.bold'),
-        },
-        'i, em': {
-          fontStyle: 'italic',
-        },
-      },
-    }),
     transitionProperty: { // defaults to these values
       'none': 'none',
       'all': 'all',

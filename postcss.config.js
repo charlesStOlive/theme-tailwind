@@ -4,6 +4,6 @@ module.exports = {
         require('tailwindcss-typography'),
         require('postcss-apply'),
         require('postcss-nested'),
-        require('autoprefixer')
+        require('autoprefixer'),
     ]
 }

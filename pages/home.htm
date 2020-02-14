@@ -10,7 +10,7 @@ $needs = Need::get();
 $needsArray = [];
 foreach($needs as $need) {
 $row = [
-'id' => $need->id,
+'slug' => $need->slug,
 'name' => $need->name,
 'intro' => $need->intro,
 'url' => $need->getCloudiBaseUrl('main_image','jpg-400-350'),
@@ -20,7 +20,6 @@ $row = [
 array_push($needsArray, $row);
 }
 $this['needs'] = $needsArray;
-$this['yo'] = 'yo les gars';
 }
 ==
 {##}
@@ -64,17 +63,17 @@ $this['yo'] = 'yo les gars';
 
 <section class="bg-white border-b py-8">
     <div class="container max-w-5xl mx-auto m-8">
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-            {% component 'contenteditor' file="home/c1_title.htm" fixture="span" %}</h1>
+        <h2 class="w-full my-2 text-center text-mydark">
+            {% component 'contenteditor' file="home/c1_title.htm" fixture="span" %}</h2>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
         <div class="flex flex-wrap">
             <div class="w-5/6 sm:w-1/2 p-6">
-                <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+                <h3 class="text-mydark">
                     {% component 'contenteditor' file="home/c1_a_title.htm" fixture="span" %}</h3>
-                <p class="text-gray-600 mb-8">
+                <p class="text-mydark mb-8">
                     {% component 'contenteditor' file="home/c1_a_cont.htm" fixture="span" %}<br><br>
 
                     <a class="text-primary font-bold underline" href="https://undraw.co/">{% component 'contenteditor' file="home/c1_a_ctoa.htm" fixture="span" %}</a>
@@ -93,9 +92,9 @@ $this['yo'] = 'yo les gars';
                 {% partial 'svgs/some_apps' %}
             </div>
             <div class="w-5/6 sm:w-1/2 p-6">
-                <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+                <h3 class="text-mydark leading-none mb-3">
                     {% component 'contenteditor' file="home/c1_b_title.htm" fixture="span" %}</h3>
-                <p class="text-gray-600 mb-8">
+                <p class="text-mydark mb-8">
                     {% component 'contenteditor' file="home/c1_b_content.htm" fixture="span" %}<br><br>
 
                     <a class="text-primary font-bold underline" href="#">{% component 'contenteditor' file="home/c1_b_ctoa.htm" fixture="span" %}</a>
@@ -110,8 +109,8 @@ $this['yo'] = 'yo les gars';
 
 <div class="pt-24 bg-fixed bg-red-600" style="background-size:cover;background-repeat:no-repeat;background-image:url(https://res.cloudinary.com/charles-saint-olive/image/upload/c_fill,h_603,q_auto:good,w_1024/v1580719783/wakaari/assets/fabio-oyXis2kALVg-unsplash.jpg)">
     <div class="flex justify-center">
-        <h1 class="my-4 text-5xl font-bold leading-tight">
-            {% component 'contenteditor' file="home/c2_title.htm" fixture="span" %}</h1>
+        <h2 class="my-4">
+            {% component 'contenteditor' file="home/c2_title.htm" fixture="span" %}</h2>
     </div>
     <div class="relative">
         {% partial 'svgs/separator/wave' %}
@@ -122,25 +121,25 @@ $this['yo'] = 'yo les gars';
 
     <div class="px-12 pt-4 pb-12">
         <div class="flex -m-4 flex-wrap">
-            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                {% component 'contenteditor' file="home/c3_title.htm" fixture="span" %}</h1>
+            <h2 class="w-full my-2 text-center text-mydark">
+                {% component 'contenteditor' file="home/c3_title.htm" fixture="span" %}</h2>
             <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+                <div class="-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <div class="w-full">
-                <p class="px-64 mr-auto text-gray-700 text-center">
+                <p class="px-64 mr-auto text-mydark text-center">
                     {% component 'contenteditor' file="home/c3_subtitle.htm" fixture="span" %}</p>
             </div>
 
             <div class="container max-w-screen-lg mx-auto">
                 {% for need in needs %}
-                <div class="m-4 bg-primary rounded shadow w-full flex">
+                <div class="m-4 gradient rounded shadow w-full flex">
                     <div class="hidden lg:block w-1/5">
-                        <a href="need/{{ need.id }}"><img class="p-2 w-full h-full object-cover" src="{{need.url}}"></a>
+                        <a href="need/{{ need.slug }}"><img class="p-2 w-full h-full object-cover" src="{{need.url}}"></a>
                     </div>
                     <div class="w-full lg:w-4/5 flex flex-col flex-wrap lg:flex-row justify-center lg:justify-start">
                         <div class="w-full">
-                            <h2 class="p-2 h2">Votre besoin : {{ need.name }}</h2>
+                            <h3 class="p-2">Votre besoin : {{ need.name }}</h3>
                             <p class="p-2">{{ need.intro }} | <a class="text-secondary underline" href="need/{{ need.id }}">En savoir +</a></p>
                             <p class="px-2 font-bold">Solutions utilsés : </p>
                             <p class="small-caps text-sm">Voici une liste non exaustive des solutions que nous
@@ -149,10 +148,10 @@ $this['yo'] = 'yo les gars';
                             </p>
                         </div>
                         {% for solution in need.solutions %}
-                        <a href="solution/{{ solution.id }}" class="animate_icon">
-                            <div class="m-2 flex bg-white shadow w-56 h-16">
+                        <a href="solution/{{ solution.slug }}" class="animate_icon">
+                            <div class="m-2 flex bg-white text-sm shadow w-56 h-16">
                                 <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
-                                <div class="self-center p-2 text-gray-800">{{ solution.name }}</div>
+                                <div class="self-center p-2 text-mydark">{{ solution.name }}</div>
                             </div>
                         </a>
                         {% endfor %}
@@ -160,22 +159,7 @@ $this['yo'] = 'yo les gars';
                 </div>
                 {% endfor %}
             </div>
-            <!-- {% for need in needs %}
-            <div class="md:w-1/2 lg:w-1/3 p-4 max-w-lg flex flex-col">
-                <div
-                    class="flex-1 bg-white rounded-t rounded-b-none group overflow-hidden shadow hover:shadow-2xl hover:bg-primary transition-all transition-500     shadow  text-gray-800">
-                    <a href="need/{{ need.id }}" class="flex flex-wrap">
-                        <img class="h-20 w-full w-max-400 object-cover opacity-100 group-hover:opacity-75"
-                            src="{{ need.url }}">
-                        <div class="w-full font-bold group-hover:text-white text-xl  pt-4 px-6">{{ need.name }}</div>
-                        <p class="text-gray-800 text-base group-hover:text-white px-6">{{ need.intro }}</p>
-                    </a>
-                    <div class="flex items-center justify-end px-6 mb-4">
-                        <a href="#" class="hover:underline text-secondary"><b>En savoir +</b></a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %} --!-->
+
         </div>
     </div>
 
