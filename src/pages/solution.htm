@@ -58,7 +58,7 @@ $this['needs'] = $needsArray;
 
 <section class="bg-white relative text-mydark">
 
-    <div class="container max-w-5xl mx-auto">
+    <div class="container max-w-5xl mx-auto px-2 py-4">
 
 
         <h2 class="text-center">
@@ -73,8 +73,23 @@ $this['needs'] = $needsArray;
 
 
 
-        {% partial 'carousel/full_text_img' data=imgs %}
+        {% for content in solution.content %}
 
+
+
+        {% if content._group == 'carousel_text' %}
+        {% partial 'carousel/carousel_text' data=content %}
+        {% endif %}
+
+        {% if content._group == 'vimeo' %}
+        {% partial 'video/vimeo' data=content %}
+        {% endif %}
+
+
+        {% endfor %}
+
+
+        {% if needs  %}
         <h3 class="py-4">Cette solution, permet de repondre à ce genre de besoin :</h3>
         <div class="w-full flex flex-col flex-wrap lg:flex-row pb-6 items-center  -mx-2 justify-center ">
             {% for need in needs %}
@@ -94,6 +109,7 @@ $this['needs'] = $needsArray;
             </div>
             {% endfor %}
         </div>
+        {% endif%}
 
 
 
