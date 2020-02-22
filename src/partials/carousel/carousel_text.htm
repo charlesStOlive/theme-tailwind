@@ -12,7 +12,9 @@
                     {% for elem in data.carousel %}
                     <div class="w-full">
                         <p class="absolute p-4">{{ elem.text }}</p>
-                        <img src="{{ elem.image | media }}" class="w-full h-full object-cover">
+                        <div class="w-full h-full bg-white">
+                            <img src="{{ elem.image | media }}" class="w-full h-full max-h-screen object-contain">
+                        </div>
                     </div>
                     {% endfor %}
                 </div>
@@ -24,7 +26,7 @@
                     {% for elem in data.carousel %}
                     <div class="w-full {{data.bg_carousel_class}}">
                         <p class="absolute p-4">{{ elem.text }}</p>
-                        <img src="{{ elem.image | media }}" class="w-full h-full object-cover">
+                        <img src="{{ elem.image | media }}" class="w-full h-full max-h-screen object-cover">
                     </div>
                     {% endfor %}
                 </div>

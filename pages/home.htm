@@ -11,6 +11,7 @@ $needsArray = [];
 foreach($needs as $need) {
 $row = [
 'slug' => $need->slug,
+'state' => $need->state,
 'name' => $need->name,
 'intro' => $need->intro,
 'url' => $need->getCloudiBaseUrl('main_image','jpg-400-350'),
@@ -40,7 +41,8 @@ $this['needs'] = $needsArray;
 
 
 
-            <button class="mx-auto lg:mx-0 hover:underline btn btn-secondary mb-4 z-10">En savoir +</button>
+            <button class="modal-open mx-auto lg:mx-0 hover:underline btn btn-secondary mb-4 z-10">Prendre
+                contact</button>
 
         </div>
         <!--Right Col-->
@@ -76,7 +78,8 @@ $this['needs'] = $needsArray;
                 <p class="text-mydark mb-8">
                     {% component 'contenteditor' file="home/c1_a_cont.htm" fixture="span" %}<br><br>
 
-                    <a class="text-primary font-bold underline" href="https://undraw.co/">{% component 'contenteditor' file="home/c1_a_ctoa.htm" fixture="span" %}</a>
+                    <!--<a class="text-primary font-bold underline"
+                        href="https://undraw.co/">{% component 'contenteditor' file="home/c1_a_ctoa.htm" fixture="span" %}</a>-->
                 </p>
 
             </div>
@@ -97,7 +100,8 @@ $this['needs'] = $needsArray;
                 <p class="text-mydark mb-8">
                     {% component 'contenteditor' file="home/c1_b_content.htm" fixture="span" %}<br><br>
 
-                    <a class="text-primary font-bold underline" href="#">{% component 'contenteditor' file="home/c1_b_ctoa.htm" fixture="span" %}</a>
+                    <!--<a class="text-primary font-bold underline"
+                        href="#">{% component 'contenteditor' file="home/c1_b_ctoa.htm" fixture="span" %}</a>-->
                 </p>
 
             </div>
@@ -135,25 +139,38 @@ $this['needs'] = $needsArray;
                 {% for need in needs %}
                 <div class="m-4 gradient rounded shadow w-full flex">
                     <div class="hidden lg:block w-1/5">
+                        {%if need.state == 'ready' %}
                         <a href="need/{{ need.slug }}"><img class="p-2 w-full h-full object-cover" src="{{need.url}}"></a>
+                        {% else %}
+                        <img class="p-2 w-full h-full opacity-75 object-cover" src="{{need.url}}">
+                        {% endif %}
                     </div>
                     <div class="w-full lg:w-4/5 flex flex-col flex-wrap lg:flex-row justify-center lg:justify-start">
                         <div class="w-full">
                             <h3 class="p-2">Votre besoin : {{ need.name }}</h3>
-                            <p class="p-2">{{ need.intro }} | <a class="text-secondary underline" href="need/{{ need.slug }}">En savoir +</a></p>
+                            <p class="p-2">{{ need.intro }} |
+                                {%if need.state == 'ready' %}<a class="text-secondary underline" href="need/{{ need.slug }}">En savoir +</a></p>
+                            {% else %}<span><b>Contenu en construction...</b></span>{% endif %}
                             <p class="px-2 font-bold">Solutions utilsés : </p>
-                            <p class="small-caps text-sm">Voici une liste non exaustive des solutions que nous
+                            <p class="px-2 small-caps text-sm">Voici une liste non exaustive des solutions que nous
                                 utiliserons
                                 pour répndre à votre besoin
                             </p>
                         </div>
                         {% for solution in need.solutions %}
+                        {% if solution.state == 'ready' %}
                         <a href="solution/{{ solution.slug }}" class="animate_icon">
                             <div class="m-2 flex bg-white text-sm shadow w-56 h-16">
                                 <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
                                 <div class="self-center p-2 text-mydark">{{ solution.name }}</div>
                             </div>
                         </a>
+                        {% else %}
+                        <div class="m-2 flex bg-gray-400 text-sm w-56 h-16">
+                            <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                            <div class="self-center p-2 text-mydark">{{ solution.name }}</div>
+                        </div>
+                        {% endif %}
                         {% endfor %}
                     </div>
                 </div>

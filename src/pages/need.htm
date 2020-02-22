@@ -65,19 +65,29 @@ trace_log($need->description2);
         {% partial 'video/vimeo' data=content %}
         {% endif %}
 
+        {% if content._group == 'text_svg' %}
+        {% partial 'blocs/text_svg' data=content %}
+        {% endif %}
+
         {% endfor %}
 
         {% if need.solutions | length > O %}
-        <h3 class="text-mydark">Les solutions utilisés pour ce genre de programme.</h3>
+        <h3 class="text-mydark">Les solutions utilisées pour ce genre de programme.</h3>
         <div class="w-full flex flex-col flex-wrap lg:flex-row justify-center lg:justify-start ">
             {% for solution in need.solutions %}
-            <a href="/solution/{{ solution.slug }}" class="animate_icon">
-                <div class="mr-4 my-4 flex shadow w-full md:w-64  h-16 bg-primary">
-                    <img class="self-center bg-white  m-1 p-1 h-12 w-12"
-                        src="{{ solution.main_image.thumb(100, 100) }}">
-                    <div class="self-center text-sm p-2 text-white ">{{ solution.name }}</div>
+            {% if solution.state == 'ready' %}
+            <a href="solution/{{ solution.slug }}" class="animate_icon">
+                <div class="m-2 flex bg-white text-sm shadow w-56  h-16">
+                    <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                    <div class="self-center p-2  text-mydark ">{{ solution.name }}</div>
                 </div>
             </a>
+            {% else %}
+            <div class="m-2 flex bg-gray-400 text-sm w-56  h-16">
+                <img class="self-center p-1 h-12 w-12" src="{{ solution.main_image.thumb(100, 100) }}">
+                <div class="self-center p-2  text-mydark ">{{ solution.name }}</div>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
         {% endif %}

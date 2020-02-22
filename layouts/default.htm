@@ -20,8 +20,8 @@ use Waka\Wcms\Models\Solution;
 
 function onStart()
 {
-$this['needMenu'] = Need::get(['name', 'slug']);
-$this['solutionMenu'] = Solution::get(['name', 'slug']);
+$this['needMenu'] = Need::where('state', 'ready')->get(['name', 'slug']);
+$this['solutionMenu'] = Solution::where('state', 'ready')->get(['name', 'slug']);
 $this['thisurl'] = $this->currentPageUrl();
 }
 ==
